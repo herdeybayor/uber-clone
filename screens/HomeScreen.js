@@ -4,11 +4,19 @@ import tw from "twrnc";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import { useDispatch } from "react-redux";
-import { setDestination, setOrigin } from "../slices/navSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectOrigin, setDestination, setOrigin } from "../slices/navSlice";
+import NavFavorites from "../components/NavFavorites";
+import { useEffect } from "react";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+  const origin = useSelector(selectOrigin);
+
+  // useEffect(() => {
+  //   if (!origin) return;
+  //   console.log(origin.location);
+  // }, [origin]);
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
@@ -57,6 +65,7 @@ const HomeScreen = () => {
           debounce={400}
         />
         <NavOptions />
+        <NavFavorites />
       </View>
     </SafeAreaView>
   );
