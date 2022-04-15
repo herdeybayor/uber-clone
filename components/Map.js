@@ -17,10 +17,14 @@ const Map = () => {
     if (!origin || !destination) return;
 
     //Zoom & Fit to Markers
-    mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-      edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
-    });
-    console.log(mapRef.current);
+    //fitToCoordinates
+    setTimeout(() => {
+      mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
+        edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+      });
+    }, 1000);
+    // console.log(mapRef.current.fitToSuppliedMarkers);
+    // console.log(mapRef.current.fitToCoordinates);
   }, [origin, destination]);
 
   return (
